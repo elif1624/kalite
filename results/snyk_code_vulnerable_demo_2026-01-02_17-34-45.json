@@ -2233,8 +2233,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "5aaf1a3e-812a-4b5c-9a38-dc54f98135a5",
             "0": "a63b46561f0d2eb1a29607212b4ec24a7f0dac5b50912c926373aab785203482",
-            "1": "96ff6052.1628da06.3d134234.139c59a8.b952d183.ba14daf2.081ac3f4.b60afa86.96ff6052.b65864a5.3d134234.4c7a69bb.2f9d0a02.ba14daf2.75d4ed92.4eadf1ec"
+            "1": "96ff6052.1628da06.3d134234.139c59a8.b952d183.ba14daf2.081ac3f4.b60afa86.96ff6052.b65864a5.3d134234.4c7a69bb.2f9d0a02.ba14daf2.75d4ed92.4eadf1ec",
+            "snyk/asset/finding/v1": "5aaf1a3e-812a-4b5c-9a38-dc54f98135a5"
           },
           "codeFlows": [
             {
@@ -2394,8 +2396,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "4041c667-ea92-462d-9897-706a52610549",
             "0": "b5c88a11ab55da3d470a3900561d59d40b82aceef0a5e5f0f71234a36816f322",
-            "1": "0c909530.590535da.a832003e.139c59a8.bc69278a.ba14daf2.269965e6.05faa619.0c909530.590535da.a832003e.139c59a8.42a20936.ba14daf2.1146218f.05faa619"
+            "1": "0c909530.590535da.a832003e.139c59a8.bc69278a.ba14daf2.269965e6.05faa619.0c909530.590535da.a832003e.139c59a8.42a20936.ba14daf2.1146218f.05faa619",
+            "snyk/asset/finding/v1": "4041c667-ea92-462d-9897-706a52610549"
           },
           "codeFlows": [
             {
@@ -2555,8 +2559,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "d5c0e906-2205-48cd-82fe-81ef61633d11",
             "0": "9372f47cf675c772a94d6c47f1141ac72f549d2626182e26d39f3a8b6017ae5e",
-            "1": "8a30cfc6.ecc4e7fd.79e62dc9.98569367.aec6edf6.ba14daf2.75d4ed92.b60afa86.2d06e3d6.cae4cd67.4c413c45.139c59a8.aec6edf6.05a1d16e.75d4ed92.100d6fba"
+            "1": "8a30cfc6.ecc4e7fd.79e62dc9.98569367.aec6edf6.ba14daf2.75d4ed92.b60afa86.2d06e3d6.cae4cd67.4c413c45.139c59a8.aec6edf6.05a1d16e.75d4ed92.100d6fba",
+            "snyk/asset/finding/v1": "d5c0e906-2205-48cd-82fe-81ef61633d11"
           },
           "codeFlows": [
             {
@@ -2753,8 +2759,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "6b81bb10-17ac-40ef-a184-5bbe84f5a144",
+            "0": "1daf63e4cef7219b762855206bcdc5d501ad7f8379ad933f7b4bd5c7bae419e3",
             "1": "0ead0f00.976f7a3f.79e62dc9.6373e959.728e1ee8.a1632d4f.25ca586c.742d9b21.0ead0f00.976f7a3f.79e62dc9.6373e959.728e1ee8.a1632d4f.25ca586c.742d9b21",
-            "0": "1daf63e4cef7219b762855206bcdc5d501ad7f8379ad933f7b4bd5c7bae419e3"
+            "snyk/asset/finding/v1": "6b81bb10-17ac-40ef-a184-5bbe84f5a144"
           },
           "codeFlows": [
             {
@@ -2846,8 +2854,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "963508ae-5037-434a-a38e-24f3928ef8e7",
             "0": "198e116bb2eb3d5fed90497892f6478f8e662486aa0bc3582dc90b1d7213615e",
-            "1": "2e8ddaeb.d65c0e39.187bf175.139c59a8.f3eda546.ba14daf2.081ac3f4.a4830b9a.2e8ddaeb.d65c0e39.187bf175.139c59a8.f3eda546.ba14daf2.ddedfe68.a4830b9a"
+            "1": "2e8ddaeb.d65c0e39.187bf175.139c59a8.f3eda546.ba14daf2.081ac3f4.a4830b9a.2e8ddaeb.d65c0e39.187bf175.139c59a8.f3eda546.ba14daf2.ddedfe68.a4830b9a",
+            "snyk/asset/finding/v1": "963508ae-5037-434a-a38e-24f3928ef8e7"
           },
           "codeFlows": [
             {
@@ -2989,6 +2999,8 @@
             }
           ],
           "fingerprints": {
+            "snyk/asset/finding/v1": "a90f0549-9bbb-4b38-98c1-4727f85f2a4c",
+            "identity": "a90f0549-9bbb-4b38-98c1-4727f85f2a4c",
             "0": "684f26d67d206a40b8b344db68eb599acef7c7e762bc6e00d88b1c1e23a4e31e",
             "1": "ad31a887.7e58cdcf.671b1085.139c59a8.7b4de430.57d888ee.fa793294.9c2ab723.b1a8a79f.277c621c.671b1085.08fb6340.828d6b14.7eee6d6e.fa793294.9c2ab723"
           },
@@ -3082,8 +3094,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "696325df-da90-4327-ac16-5d41deba545c",
             "0": "ff1b7ef4824638f6e15c34000f5665231be2dea7c94cb7fa83e7bced84e20c94",
-            "1": "6bbb016e.ecc4e7fd.79e62dc9.7369b21f.cc857d4e.ba14daf2.058fca1d.a52f12f1.2d06e3d6.689b46eb.1b4bf7da.7369b21f.89a7456e.bc9949d2.058fca1d.91057b05"
+            "1": "6bbb016e.ecc4e7fd.79e62dc9.7369b21f.cc857d4e.ba14daf2.058fca1d.a52f12f1.2d06e3d6.689b46eb.1b4bf7da.7369b21f.89a7456e.bc9949d2.058fca1d.91057b05",
+            "snyk/asset/finding/v1": "696325df-da90-4327-ac16-5d41deba545c"
           },
           "codeFlows": [
             {
@@ -3277,8 +3291,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "149c6c52-a933-47e7-86a9-32a73be71692",
             "0": "4828a3c9202d1889129534d4e50be9573a42d6e83e1706c25bf938b6cf709758",
-            "1": "8a30cfc6.ecc4e7fd.79e62dc9.98569367.aec6edf6.ba14daf2.75d4ed92.b60afa86.2d06e3d6.cae4cd67.4c413c45.139c59a8.aec6edf6.05a1d16e.75d4ed92.100d6fba"
+            "1": "8a30cfc6.ecc4e7fd.79e62dc9.98569367.aec6edf6.ba14daf2.75d4ed92.b60afa86.2d06e3d6.cae4cd67.4c413c45.139c59a8.aec6edf6.05a1d16e.75d4ed92.100d6fba",
+            "snyk/asset/finding/v1": "149c6c52-a933-47e7-86a9-32a73be71692"
           },
           "codeFlows": [
             {
@@ -3472,8 +3488,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "6a3338a5-3a8d-44f7-9fee-62b4023ad0e7",
             "0": "cf5e2dcd6580bc79ae6ab80e34ff923d5afa91d866605e77b87351c289370158",
-            "1": "8a30cfc6.993139d5.79e62dc9.98569367.1c8e31ae.ba14daf2.0a7337bb.4eadf1ec.96ff6052.b65864a5.b588a99c.4c7a69bb.2f9d0a02.48e1de78.22a8b49e.073a31b1"
+            "1": "8a30cfc6.993139d5.79e62dc9.98569367.1c8e31ae.ba14daf2.0a7337bb.4eadf1ec.96ff6052.b65864a5.b588a99c.4c7a69bb.2f9d0a02.48e1de78.22a8b49e.073a31b1",
+            "snyk/asset/finding/v1": "6a3338a5-3a8d-44f7-9fee-62b4023ad0e7"
           },
           "codeFlows": [
             {
@@ -3705,8 +3723,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "4f89413d-c85e-4c6e-a313-51879454e089",
+            "0": "9bb163749bcc9693a96270f0c0a11e2d8606ff374f0bb30abc45afb5818d17cd",
             "1": "2e8ddaeb.993139d5.187bf175.139c59a8.05fcde4c.57d888ee.0a7337bb.a4830b9a.2e8ddaeb.d65c0e39.187bf175.66baf00a.f3eda546.48e1de78.22a8b49e.a4830b9a",
-            "0": "9bb163749bcc9693a96270f0c0a11e2d8606ff374f0bb30abc45afb5818d17cd"
+            "snyk/asset/finding/v1": "4f89413d-c85e-4c6e-a313-51879454e089"
           },
           "codeFlows": [
             {
@@ -3921,8 +3941,10 @@
             }
           ],
           "fingerprints": {
+            "identity": "e10ad72a-64d8-4e07-b0ed-644301d21e63",
             "0": "28ef77f93c74a18989d4289e19accf6d6de8ad796ce46bb4afacab4d9f5abdd5",
-            "1": "0c909530.993139d5.79e62dc9.687dcb10.1a0abf6d.ba14daf2.1146218f.05faa619.0c909530.590535da.a832003e.66baf00a.1a0abf6d.48e1de78.22a8b49e.05faa619"
+            "1": "0c909530.993139d5.79e62dc9.687dcb10.1a0abf6d.ba14daf2.1146218f.05faa619.0c909530.590535da.a832003e.66baf00a.1a0abf6d.48e1de78.22a8b49e.05faa619",
+            "snyk/asset/finding/v1": "e10ad72a-64d8-4e07-b0ed-644301d21e63"
           },
           "codeFlows": [
             {
@@ -4135,7 +4157,7 @@
         ]
       },
       "automationDetails": {
-        "id": "Snyk/Code/2026-01-02T12:44:30Z"
+        "id": "Snyk/Code/2026-01-02T14:34:44Z"
       }
     }
   ]

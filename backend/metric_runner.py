@@ -1,4 +1,20 @@
-# backend/metric_runner.py
+"""
+Snyk Code Runner Modülü
+
+Bu modül, Snyk Code CLI kullanarak kod analizi yapar ve sonuçları
+standart metrik formatına normalize eder.
+
+Ana Fonksiyonlar:
+- run_snyk_code_scan(): Snyk CLI ile tarama yapar
+- save_scan_result(): Sonuçları JSON formatında kaydeder
+- run_code_scan_and_save(): Tam tarama ve kaydetme işlemi
+
+Kullanım:
+    python metric_runner.py
+    veya
+    from metric_runner import run_code_scan_and_save
+    result = run_code_scan_and_save("flask_demo")
+"""
 
 import json
 import subprocess
@@ -7,10 +23,29 @@ from datetime import datetime
 from pathlib import Path
 from metrics.snyk_metrics import SnykMetrics
 
+# Snyk CLI yolu (Windows için)
+# Not: Bu yol sistemden sisteme değişebilir
 SNYK_PATH = r"C:\Users\LOQ\AppData\Roaming\npm\snyk.cmd"
+
+# Sonuç dosyalarının kaydedileceği klasör
 RESULTS_DIR = "../results"
 
 def run_snyk_code_scan(target_path: str) -> dict:
+    """
+    Snyk Code CLI kullanarak kod analizi yapar
+    
+    Args:
+        target_path: Taranacak proje klasörünün yolu
+    
+    Returns:
+        dict: Snyk'ten gelen JSON formatındaki ham sonuç
+        (SARIF formatı veya eski vulnerabilities formatı)
+    
+    Raises:
+        RuntimeError: Snyk CLI hatası veya tarama başarısız olduğunda
+    """
+    # Snyk CLI komutunu çalıştır
+    # --json flag'i ile JSON formatında çıktı al
     result = subprocess.run(
         [SNYK_PATH, "code", "test", target_path, "--json"],
         stdout=subprocess.PIPE,
@@ -18,9 +53,11 @@ def run_snyk_code_scan(target_path: str) -> dict:
         text=True
     )
 
+    # Hata kontrolü
     if result.returncode != 0 and not result.stdout:
         raise RuntimeError(result.stderr)
 
+    # JSON çıktısını parse et
     return json.loads(result.stdout)
 
 def save_scan_result(raw_output: dict, tool_name: str, project_name: str) -> str:

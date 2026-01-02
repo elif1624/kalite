@@ -1,3 +1,22 @@
+"""
+SmartTestAI Feature Metrics Engine - Flask REST API
+
+Bu modül, AI kod analiz araçlarını (Snyk Code, DeepSource) karşılaştırmak için
+bir REST API sağlar. Her araç için tarama endpoint'leri ve metrik normalizasyonu içerir.
+
+Ana Özellikler:
+- Snyk Code taraması ve metrik normalizasyonu
+- DeepSource taraması ve metrik normalizasyonu
+- Standart metrik formatı (critical, high, medium, low)
+- JSON formatında sonuç kaydetme
+- RESTful API endpoint'leri
+
+Kullanım:
+    python app.py
+    
+API adresi: http://localhost:5001
+"""
+
 from flask import Flask, jsonify, send_file, request
 import os
 from pathlib import Path
@@ -5,14 +24,24 @@ from snyk_runner import run_and_return, REPORT_DIR
 from metric_runner import run_code_scan_and_save
 from deepsource_runner import run_deepsource_scan_and_save
 
+# Flask uygulamasını başlat
 app = Flask(__name__)
 
-# Mevcut test projeleri
+# Mevcut test projeleri listesi
+# Bu projeler test_projects/ klasöründe bulunmalıdır
 AVAILABLE_PROJECTS = ["flask_demo", "nodejs-goof"]
 
 @app.route("/scan", methods=["POST"])
 def scan():
-    """Container taraması (eski endpoint - geriye dönük uyumluluk için)"""
+    """
+    Container taraması endpoint'i (eski endpoint - geriye dönük uyumluluk için)
+    
+    Not: Bu endpoint container taraması için kullanılıyordu.
+    Yeni kod analizi için /scan/code veya /scan/deepsource kullanın.
+    
+    Returns:
+        JSON response with scan summary and report file path
+    """
     summary, file_path = run_and_return()
     if not summary:
         return jsonify({"error": "scan failed"}), 500
@@ -27,7 +56,10 @@ def scan():
 @app.route("/scan/code", methods=["POST"])
 def scan_code():
     """
-    Code taraması endpoint'i
+    Snyk Code taraması endpoint'i
+    
+    Bu endpoint, belirtilen test projesi için Snyk Code taraması yapar,
+    sonuçları normalize eder ve results/ klasörüne kaydeder.
     
     Request body (JSON):
     {
@@ -36,6 +68,13 @@ def scan_code():
     
     veya query parameter:
     ?project=flask_demo
+    
+    Returns:
+        JSON response with:
+        - message: İşlem durumu
+        - project: Taranan proje adı
+        - file_path: Kaydedilen sonuç dosyası yolu
+        - metrics: Normalize edilmiş metrik sonuçları
     """
     # Proje adını al (body'den veya query'den)
     project = None
@@ -73,10 +112,15 @@ def scan_code():
 @app.route("/scan/code/all", methods=["POST"])
 def scan_code_all():
     """
-    Tüm test projeleri için code taraması yapar
+    Tüm test projeleri için Snyk Code taraması yapar
+    
+    AVAILABLE_PROJECTS listesindeki tüm projeleri sırayla tarar
+    ve her biri için sonuçları döner.
     
     Returns:
-        Her proje için tarama sonuçları
+        JSON response with:
+        - message: Başarılı tarama sayısı
+        - results: Her proje için tarama sonuçları listesi
     """
     results = []
     
@@ -94,7 +138,14 @@ def scan_code_all():
 
 @app.route("/projects", methods=["GET"])
 def list_projects():
-    """Mevcut test projelerini listeler"""
+    """
+    Mevcut test projelerini listeler
+    
+    Returns:
+        JSON response with:
+        - available_projects: Proje adları listesi
+        - projects: Her proje için detaylı bilgi (name, exists, path)
+    """
     projects_info = []
     
     for project in AVAILABLE_PROJECTS:
@@ -115,6 +166,12 @@ def list_projects():
 
 @app.route("/scan/latest", methods=["GET"])
 def latest():
+    """
+    En son container tarama raporunu döner (eski endpoint)
+    
+    Returns:
+        En son rapor dosyası
+    """
     files = os.listdir(REPORT_DIR)
     if not files:
         return jsonify({"error": "no reports found"}), 404
@@ -125,6 +182,15 @@ def latest():
 
 @app.route("/scan/file/<name>", methods=["GET"])
 def file(name):
+    """
+    Belirtilen rapor dosyasını döner (eski endpoint)
+    
+    Args:
+        name: Rapor dosyası adı
+    
+    Returns:
+        Rapor dosyası
+    """
     return send_file(os.path.join(REPORT_DIR, name))
 
 
@@ -137,6 +203,12 @@ def scan_deepsource():
     """
     DeepSource code taraması endpoint'i
     
+    Bu endpoint, belirtilen test projesi için DeepSource taraması yapar,
+    sonuçları normalize eder ve results/ klasörüne kaydeder.
+    
+    DeepSource GraphQL API kullanarak repository issues'larını alır
+    ve standart metrik formatına dönüştürür.
+    
     Request body (JSON):
     {
         "project": "flask_demo" veya "nodejs-goof" (opsiyonel, default: flask_demo)
@@ -144,6 +216,13 @@ def scan_deepsource():
     
     veya query parameter:
     ?project=flask_demo
+    
+    Returns:
+        JSON response with:
+        - message: İşlem durumu
+        - project: Taranan proje adı
+        - file_path: Kaydedilen sonuç dosyası yolu
+        - metrics: Normalize edilmiş metrik sonuçları
     """
     # Proje adını al (body'den veya query'den)
     project = None
@@ -183,8 +262,13 @@ def scan_deepsource_all():
     """
     Tüm test projeleri için DeepSource taraması yapar
     
+    AVAILABLE_PROJECTS listesindeki tüm projeleri sırayla tarar
+    ve her biri için sonuçları döner.
+    
     Returns:
-        Her proje için tarama sonuçları
+        JSON response with:
+        - message: Başarılı tarama sayısı
+        - results: Her proje için tarama sonuçları listesi
     """
     results = []
     
@@ -201,4 +285,10 @@ def scan_deepsource_all():
 
 
 if __name__ == "__main__":
+    """
+    Flask uygulamasını başlatır
+    
+    Port: 5001
+    Debug mode: True (geliştirme için)
+    """
     app.run(port=5001, debug=True)
