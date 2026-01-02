@@ -4,6 +4,14 @@ SmartTestAI Feature Metrics Engine - Flask REST API
 Bu modül, AI kod analiz araçlarını (Snyk Code, DeepSource) karşılaştırmak için
 bir REST API sağlar. Her araç için tarama endpoint'leri ve metrik normalizasyonu içerir.
 
+Proje Yapısı:
+- backend/app.py: Ana Flask uygulaması (bu dosya)
+- backend/metric_runner.py: Snyk Code tarama runner'ı
+- backend/deepsource_runner.py: DeepSource tarama runner'ı
+- backend/metrics/: Metrik hesaplama modülleri
+- backend/tests/: Test script'leri
+- results/: Tarama sonuçları (JSON formatında)
+
 Ana Özellikler:
 - Snyk Code taraması ve metrik normalizasyonu
 - DeepSource taraması ve metrik normalizasyonu
@@ -12,6 +20,7 @@ Ana Özellikler:
 - RESTful API endpoint'leri
 
 Kullanım:
+    cd backend
     python app.py
     
 API adresi: http://localhost:5001

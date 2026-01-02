@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
-"""DeepSource API Test Script"""
+"""
+DeepSource API Test Script
+
+Bu script, DeepSource GraphQL API'sini test eder ve
+repository issues'larını alır.
+
+Kullanım:
+    cd backend/tests
+    python test_deepsource_api.py
+    
+    veya backend/ klasöründen:
+    python -m tests.test_deepsource_api
+"""
 
 import requests
 import json
 
+# DeepSource API yapılandırması
 TOKEN = "dsp_144b578a44fdc5553b0fe6ff5a52b00c8752"
 API_URL = "https://api.deepsource.io/graphql/"
 

@@ -4,12 +4,18 @@ Snyk Code Runner Modülü
 Bu modül, Snyk Code CLI kullanarak kod analizi yapar ve sonuçları
 standart metrik formatına normalize eder.
 
+Proje Yapısı İçindeki Yeri:
+- backend/metric_runner.py: Bu dosya
+- backend/metrics/snyk_metrics.py: Snyk metrik normalizasyonu
+- results/: Tarama sonuçları kaydedilir
+
 Ana Fonksiyonlar:
 - run_snyk_code_scan(): Snyk CLI ile tarama yapar
 - save_scan_result(): Sonuçları JSON formatında kaydeder
 - run_code_scan_and_save(): Tam tarama ve kaydetme işlemi
 
 Kullanım:
+    cd backend
     python metric_runner.py
     veya
     from metric_runner import run_code_scan_and_save

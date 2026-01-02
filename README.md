@@ -26,23 +26,27 @@ Bu projede şu an **SADECE KOD ANALİZİNE ODAKLANIYORUZ**.
 
 ```
 SmartTestAI-feature-metrics-engine/
-├── backend/
-│   ├── app.py                    # Flask REST API
-│   ├── metric_runner.py          # Snyk Code runner
-│   ├── deepsource_runner.py      # DeepSource runner
-│   ├── test_advanced_metrics.py  # Gelişmiş metrik test script'i
-│   ├── metrics/
-│   │   ├── base_metric.py        # Abstract metric class
-│   │   ├── snyk_metrics.py       # Snyk metric implementation
-│   │   ├── deepsource_metrics.py # DeepSource metric implementation
-│   │   ├── advanced_metrics.py   # Gelişmiş metrik hesaplama
+├── backend/                       # Ana uygulama kodu
+│   ├── app.py                     # Flask REST API (ana entry point)
+│   ├── metric_runner.py           # Snyk Code runner
+│   ├── deepsource_runner.py       # DeepSource runner
+│   ├── metrics/                   # Metrik hesaplama modülleri
+│   │   ├── base_metric.py         # Abstract metric class
+│   │   ├── snyk_metrics.py        # Snyk metric implementation
+│   │   ├── deepsource_metrics.py  # DeepSource metric implementation
+│   │   ├── advanced_metrics.py    # Gelişmiş metrik hesaplama
 │   │   └── result_model.py       # Standard metric result model
-│   └── API_DOCUMENTATION.md      # API dokümantasyonu
-├── test_projects/                # Test projeleri
-│   ├── flask_demo/              # Flask test projesi
-│   └── vulnerable_demo/         # Güvenlik açıklı test projesi
-├── results/                      # Tarama sonuçları (JSON)
-└── README.md                     # Bu dosya
+│   ├── tests/                     # Test script'leri
+│   │   ├── test_advanced_metrics.py  # Gelişmiş metrik testleri
+│   │   └── test_deepsource_api.py    # DeepSource API testleri
+│   └── docs/                      # Backend dokümantasyonu
+│       ├── API_DOCUMENTATION.md
+│       └── METRICS_DOCUMENTATION.md
+├── test_projects/                 # Test projeleri
+│   ├── flask_demo/               # Flask test projesi
+│   └── vulnerable_demo/          # Güvenlik açıklı test projesi
+├── results/                       # Tarama sonuçları (JSON, gitignore'da)
+└── README.md                      # Ana proje dokümantasyonu
 ```
 
 ## 🚀 Hızlı Başlangıç
@@ -104,8 +108,12 @@ curl -X POST http://localhost:5001/scan/deepsource \
 
 **Gelişmiş Metrikleri Test Et:**
 ```bash
-cd backend
+cd backend/tests
 python test_advanced_metrics.py
+
+# veya backend/ klasöründen:
+cd backend
+python -m tests.test_advanced_metrics
 ```
 
 ## 📊 Standart Metrik Formatı

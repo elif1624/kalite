@@ -10,7 +10,11 @@ Test Senaryoları:
 2. DeepSource: Repository-based tarama için temel metrikleri hesaplar
 
 Kullanım:
+    cd backend/tests
     python test_advanced_metrics.py
+    
+    veya backend/ klasöründen:
+    python -m tests.test_advanced_metrics
 
 Çıktı:
     - Console'da metrik sonuçları gösterilir
@@ -18,14 +22,19 @@ Kullanım:
 """
 
 import json
+import sys
 from pathlib import Path
 from datetime import datetime
+
+# Backend klasörünü Python path'ine ekle
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from metrics.advanced_metrics import AdvancedMetricsCalculator, AdvancedMetricResult
 from metrics.snyk_metrics import SnykMetrics
 from metrics.deepsource_metrics import DeepSourceMetrics
 
-# Sonuç dosyalarının kaydedileceği klasör
-RESULTS_DIR = "../results"
+# Sonuç dosyalarının kaydedileceği klasör (proje root'una göre)
+RESULTS_DIR = "../../results"
 
 def create_ground_truth_vulnerable_demo():
     """
@@ -124,7 +133,7 @@ def test_snyk_advanced_metrics():
     print("=" * 60)
     
     # Son Snyk sonuç dosyasını bul
-    snyk_files = list(Path("../results").glob("snyk_code_*.json"))
+    snyk_files = list(Path("../../results").glob("snyk_code_*.json"))
     if not snyk_files:
         print("HATA: Snyk sonuc dosyasi bulunamadi!")
         return
@@ -198,7 +207,7 @@ def test_deepsource_advanced_metrics():
     
     # Son DeepSource sonuç dosyasını bul (advanced_metrics olmayan)
     deepsource_files = [
-        f for f in Path("../results").glob("deepsource_*.json")
+        f for f in Path("../../results").glob("deepsource_*.json")
         if "advanced_metrics" not in f.name
     ]
     if not deepsource_files:

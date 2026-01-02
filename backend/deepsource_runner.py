@@ -4,6 +4,11 @@ DeepSource Runner Modülü
 Bu modül, DeepSource GraphQL API kullanarak kod analizi yapar ve sonuçları
 standart metrik formatına normalize eder.
 
+Proje Yapısı İçindeki Yeri:
+- backend/deepsource_runner.py: Bu dosya
+- backend/metrics/deepsource_metrics.py: DeepSource metrik normalizasyonu
+- results/: Tarama sonuçları kaydedilir
+
 DeepSource repository-based çalışır, yani local path yerine GitHub repository
 bilgisi kullanılır.
 
@@ -13,6 +18,7 @@ Ana Fonksiyonlar:
 - run_deepsource_scan_and_save(): Tam tarama ve kaydetme işlemi
 
 Kullanım:
+    cd backend
     python deepsource_runner.py
     veya
     from deepsource_runner import run_deepsource_scan_and_save
