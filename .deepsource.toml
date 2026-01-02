@@ -1,0 +1,17 @@
+version = 1
+
+[[analyzers]]
+name = "python"
+enabled = true
+
+  [analyzers.python]
+  enabled = true
+
+[[analyzers]]
+name = "security"
+enabled = true
+
+[[analyzers]]
+name = "test-coverage"
+enabled = false
+
