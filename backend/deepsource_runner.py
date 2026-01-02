@@ -39,11 +39,14 @@ def _get_mock_deepsource_output(target_path: str) -> dict:
     }
 
 # DeepSource yapılandırması
-# DeepSource API token veya CLI path'i buraya eklenecek
 DEEPSOURCE_API_TOKEN = os.getenv("DEEPSOURCE_API_TOKEN", "")
-DEEPSOURCE_API_URL = os.getenv("DEEPSOURCE_API_URL", "https://api.deepsource.io")
-# Eğer CLI kullanılıyorsa:
+DEEPSOURCE_API_URL = os.getenv("DEEPSOURCE_API_URL", "https://api.deepsource.io/graphql/")
 DEEPSOURCE_CLI_PATH = os.getenv("DEEPSOURCE_CLI_PATH", "deepsource")
+
+# Repository bilgileri (environment variable'dan veya default)
+DEEPSOURCE_REPO_OWNER = os.getenv("DEEPSOURCE_REPO_OWNER", "elif1624")
+DEEPSOURCE_REPO_NAME = os.getenv("DEEPSOURCE_REPO_NAME", "kalite")
+DEEPSOURCE_VCS_PROVIDER = os.getenv("DEEPSOURCE_VCS_PROVIDER", "GITHUB")  # GITHUB, GITLAB, BITBUCKET
 
 def run_deepsource_scan(target_path: str) -> dict:
     """
@@ -87,30 +90,52 @@ def run_deepsource_scan(target_path: str) -> dict:
     except subprocess.TimeoutExpired:
         raise RuntimeError("DeepSource scan timeout (exceeded 5 minutes)")
     
-    # YÖNTEM 2: DeepSource API kullanımı
+    # YÖNTEM 2: DeepSource GraphQL API kullanımı
     if DEEPSOURCE_API_TOKEN:
         try:
-            # DeepSource API endpoint'ine istek at
-            # Bu endpoint DeepSource dokümantasyonuna göre güncellenmeli
+            # DeepSource GraphQL API endpoint'ine istek at
             headers = {
-                "Authorization": f"Token {DEEPSOURCE_API_TOKEN}",
+                "Authorization": f"Bearer {DEEPSOURCE_API_TOKEN}",
                 "Content-Type": "application/json"
             }
             
-            # Proje bilgilerini al (örnek - gerçek API'ye göre güncellenmeli)
-            # DeepSource API'si genellikle repository-based çalışır
+            # GraphQL query: Repository issues'ları al
+            # Not: DeepSource repository-based çalışır, local path yerine repository bilgisi kullanılır
+            query = {
+                "query": """
+                query {
+                    repository(login: "%s", name: "%s", vcsProvider: %s) {
+                        name
+                        issues(first: 100) {
+                            totalCount
+                            edges {
+                                node {
+                                    issue {
+                                        shortcode
+                                        title
+                                        severity
+                                        category
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                """ % (DEEPSOURCE_REPO_OWNER, DEEPSOURCE_REPO_NAME, DEEPSOURCE_VCS_PROVIDER)
+            }
+            
             response = requests.post(
-                f"{DEEPSOURCE_API_URL}/v1/analyze",
+                DEEPSOURCE_API_URL,
                 headers=headers,
-                json={
-                    "path": target_path,
-                    "format": "json"
-                },
+                json=query,
                 timeout=300
             )
             
             if response.status_code == 200:
-                return response.json()
+                result = response.json()
+                if "errors" in result:
+                    raise RuntimeError(f"DeepSource GraphQL error: {result['errors']}")
+                return result
             else:
                 raise RuntimeError(f"DeepSource API error: {response.status_code} - {response.text}")
         

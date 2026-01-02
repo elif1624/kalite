@@ -1,0 +1,82 @@
+{
+  "data": {
+    "repository": {
+      "name": "kalite",
+      "issues": {
+        "totalCount": 7,
+        "edges": [
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PYL-R0201",
+                "title": "Consider decorating method with `@staticmethod`",
+                "severity": "MAJOR",
+                "category": "PERFORMANCE"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PY-W2000",
+                "title": "Imported name is not used anywhere in the module",
+                "severity": "MAJOR",
+                "category": "ANTI_PATTERN"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PYL-W1510",
+                "title": "Subprocess run with ignored non-zero exit",
+                "severity": "MINOR",
+                "category": "BUG_RISK"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PYL-W0621",
+                "title": "Re-defined variable from outer scope",
+                "severity": "MAJOR",
+                "category": "ANTI_PATTERN"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PYL-W0612",
+                "title": "Unused variable found",
+                "severity": "MAJOR",
+                "category": "ANTI_PATTERN"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "BAN-B104",
+                "title": "Audit: Binding to all interfaces detected with hardcoded values",
+                "severity": "MAJOR",
+                "category": "SECURITY"
+              }
+            }
+          },
+          {
+            "node": {
+              "issue": {
+                "shortcode": "PYL-W0613",
+                "title": "Function contains unused argument",
+                "severity": "MAJOR",
+                "category": "ANTI_PATTERN"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
