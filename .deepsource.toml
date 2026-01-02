@@ -4,14 +4,3 @@ version = 1
 name = "python"
 enabled = true
 
-  [analyzers.python]
-  enabled = true
-
-[[analyzers]]
-name = "security"
-enabled = true
-
-[[analyzers]]
-name = "test-coverage"
-enabled = false
-
